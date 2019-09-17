@@ -82,19 +82,34 @@ def move(x):
             x = move_val(x,y)
             return round(x,1)
     elif x == 3.2:
-
-
-x= 1.2
-
-y = move(x)
-
-print(y)
-
+        print("You can travel: (N)orth or (S)outh.")
+        y = input("Direction: ").lower()
+        while y != "n" and y != "s":
+            print("Not a valid direction!")
+            y = input("Direction: ").lower()
+        else:
+            x = move_val(x,y)
+            return round(x,1)
+    elif x == 3.3:
+        print("You can travel: (S)outh or (W)est.")
+        y = input("Direction: ").lower()
+        while y != "s" and y != "w":
+            print("Not a valid direction!")
+            y = input("Direction: ").lower()
+        else:
+            x = move_val(x,y)
+            return round(x,1)
 
 
 #skref 2
-#byrjunargildi: tile (1,1) og fyrsta input frá notanda
+#byrjunargildi: tile (1,1)
 
+position = 1.1
 
 #skref 3 
 # while loop þar sem sem move() er beitt 
+
+while position != 3.1:
+    position = move(position)
+
+print("Victory!")
