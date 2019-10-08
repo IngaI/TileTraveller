@@ -123,17 +123,21 @@ def move(location):
             return round(location,1)
 
 
-
+def the_game(position, total_coin, lever_position):
+    while position != 3.1:
+        position = move(position)
+        if position in lever_position:
+            total_coin = pull_a_lever(total_coin)
+    print("Victory! Total coins {}.".format(total_coin))
 
 position = 1.1
 total_coin = 0
 lever_position = [1.2 , 2.2 , 2.3 , 3.2]
 
-while position != 3.1:
-    position = move(position)
-    if position in lever_position:
-        total_coin = pull_a_lever(total_coin)
+the_game(position, total_coin, lever_position)
+play_again = input("Play again (y/n): ").lower()
 
-
-print("Victory! Total coins {}.".format(total_coin))
+while play_again == "y":
+    the_game(position, total_coin, lever_position)
+    play_again = input("Play again (y/n): ").lower()
 
