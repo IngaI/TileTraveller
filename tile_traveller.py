@@ -3,113 +3,115 @@
 #skref1
 """búa til function move sem tekur inn staðsetningu og beiðni um færslu og skilar
 nýrri staðsetningu eða commenti ef færslan er ekki í boði fyrir tiltekinn reit"""
-
-def move_val(x,y):
+NORTH = "n"
+SOUTH = "s"
+EAST = "e"
+WEST = "w"
+def move_val(location,direction):
     """takes in location (x) and direction (y) and moves accordingly, returns
     new location"""
     #x = float(x)
-    y = y.lower()
-    if y =="n":
-        x += 0.1
-        return x
-    elif y == "s":
-        x -= 0.1
-        return x
-    elif y == "e":
-        x += 1.0
-        return x
-    elif y == "w":
-        x -= 1.0
-        return x
+    direction = direction.lower()
+    if direction == NORTH:
+        location += 0.1
+        return location
+    elif direction == SOUTH :
+        location -= 0.1
+        return location
+    elif direction == EAST:
+        location += 1.0
+        return location
+    elif direction == WEST:
+        location -= 1.0
+        return location
+
+def pull_a_lever():
+    #pull = input("Pull a lever (y/n): ")
+    pass 
 
 
 
-
-def move(x):
-    """ takes in a location (x) and returns a new location by conditions"""
-    if x == 1.1:
+def move(location):
+    """ takes in a location and returns a new location by conditions"""
+    if location == 1.1:
         print("You can travel: (N)orth.")
-        y = input("Direction: ").lower()
-        while y != "n":
+        direction = input("Direction: ").lower()
+        while direction != NORTH:
             print("Not a valid direction!")
-            y = input("Direction: ").lower()
+            direction = input("Direction: ").lower()
         else:
-            x = move_val(x,y)
-            return round(x,1)
-    elif x == 1.2:
+            location = move_val(location,direction)
+            return round(location,1)
+    elif location == 1.2:
         print("You can travel: (N)orth or (E)ast or (S)outh.") 
-        y = input("Direction: ").lower()
-        while y!= "n" and y!= "e" and y!= "s":
+        direction = input("Direction: ").lower()
+        while direction!= NORTH and direction!= EAST and direction != SOUTH:
             print("Not a valid direction!")
-            y = input("Direction: ").lower()
+            direction = input("Direction: ").lower()
         else:
-            x = move_val(x,y)
-            return round(x,1)
-    elif x == 1.3:
+            location = move_val(location,direction)
+            return round(location,1)
+    elif location == 1.3:
         print("You can travel: (E)ast or (S)outh.")
-        y = input("Direction: ").lower()
-        while  y!= "e" and y!= "s":
+        direction = input("Direction: ").lower()
+        while  direction!= EAST and direction!= SOUTH:
             print("Not a valid direction!")
-            y = input("Direction: ").lower()
+            direction = input("Direction: ").lower()
         else:
-            x = move_val(x,y)
-            return round(x,1)
-    elif x == 2.1:
+            location = move_val(location,direction)
+            return round(location,1)
+    elif location == 2.1:
         print("You can travel: (N)orth.")
-        y = input("Direction: ").lower()
-        while y != "n":
+        direction = input("Direction: ").lower()
+        while direction != NORTH:
             print("Not a valid direction!")
-            y = input("Direction: ").lower()
+            direction = input("Direction: ").lower()
         else:
-            x = move_val(x,y)
-            return round(x,1)
-    elif x == 2.2:
+            location = move_val(location,direction)
+            return round(location,1)
+    elif location == 2.2:
         print("You can travel: (S)outh or (W)est.")
-        y = input("Direction: ").lower()
-        while y != "s" and y != "w":
+        direction = input("Direction: ").lower()
+        while direction != SOUTH and direction != WEST:
             print("Not a valid direction!")
-            y = input("Direction: ").lower()
+            direction = input("Direction: ").lower()
         else:
-            x = move_val(x,y)
-            return round(x,1)
-    elif x == 2.3:
+            location = move_val(location,direction)
+            return round(location,1)
+    elif location == 2.3:
         print("You can travel: (E)ast or (W)est.")
-        y = input("Direction: ").lower()
-        while y != "e" and y != "w":
+        direction = input("Direction: ").lower()
+        while direction != EAST and direction != WEST:
             print("Not a valid direction!")
-            y = input("Direction: ").lower()
+            direction = input("Direction: ").lower()
         else:
-            x = move_val(x,y)
-            return round(x,1)
-    elif x == 3.2:
+            location = move_val(location,direction)
+            return round(location,1)
+    elif location == 3.2:
         print("You can travel: (N)orth or (S)outh.")
-        y = input("Direction: ").lower()
-        while y != "n" and y != "s":
+        direction = input("Direction: ").lower()
+        while direction != NORTH and direction != SOUTH:
             print("Not a valid direction!")
-            y = input("Direction: ").lower()
+            direction = input("Direction: ").lower()
         else:
-            x = move_val(x,y)
-            return round(x,1)
-    elif x == 3.3:
+            location = move_val(location,direction)
+            return round(location,1)
+    elif location == 3.3:
         print("You can travel: (S)outh or (W)est.")
-        y = input("Direction: ").lower()
-        while y != "s" and y != "w":
+        direction = input("Direction: ").lower()
+        while direction != SOUTH and direction != WEST:
             print("Not a valid direction!")
-            y = input("Direction: ").lower()
+            direction = input("Direction: ").lower()
         else:
-            x = move_val(x,y)
-            return round(x,1)
+            location = move_val(location,direction)
+            return round(location,1)
 
 
-#skref 2
-#byrjunargildi: tile (1,1)
+
 
 position = 1.1
-
-#skref 3 
-# while loop þar sem sem move() er beitt 
-
 while position != 3.1:
     position = move(position)
 
 print("Victory!")
+
