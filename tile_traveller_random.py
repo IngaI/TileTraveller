@@ -40,104 +40,120 @@ def pull_a_lever(total_coin, y_n):
     return total_coin
 
 
-def move(location, directions):
+def move(location, directions, move_count):
     """ takes in a location and returns a new location by conditions"""
     if location == 1.1:
         print("You can travel: (N)orth.")
         direction = random.choice(directions)
+        move_count +=1
         print("Direction:", direction)
         while direction != NORTH:
             print("Not a valid direction!")
             print("You can travel: (N)orth.")
             direction = random.choice(directions)
+            move_count +=1
             print("Direction:", direction)
         else:
             location = move_val(location,direction)
-            return round(location,1)
+            return round(location,1), move_count
     elif location == 1.2:
         print("You can travel: (N)orth or (E)ast or (S)outh.") 
         direction = random.choice(directions)
+        move_count +=1
         print("Direction:", direction)
         while direction!= NORTH and direction!= EAST and direction != SOUTH:
             print("Not a valid direction!")
             print("You can travel: (N)orth or (E)ast or (S)outh.")
             direction = random.choice(directions)
+            move_count +=1
             print("Direction:", direction)
         else:
             location = move_val(location,direction)
-            return round(location,1)
+            return round(location,1), move_count
     elif location == 1.3:
         print("You can travel: (E)ast or (S)outh.")
         direction = random.choice(directions)
+        move_count +=1
         print("Direction:", direction)
         while  direction!= EAST and direction!= SOUTH:
             print("Not a valid direction!")
             print("You can travel: (E)ast or (S)outh.")
             direction = random.choice(directions)
+            move_count +=1
             print("Direction:", direction)
         else:
             location = move_val(location,direction)
-            return round(location,1)
+            return round(location,1), move_count
     elif location == 2.1:
         print("You can travel: (N)orth.")
         direction = random.choice(directions)
+        move_count +=1
         print("Direction:", direction)
         while direction != NORTH:
             print("Not a valid direction!")
             print("You can travel: (N)orth.")
             direction = random.choice(directions)
+            move_count +=1
             print("Direction:", direction)
         else:
             location = move_val(location,direction)
-            return round(location,1)
+            return round(location,1), move_count
     elif location == 2.2:
         print("You can travel: (S)outh or (W)est.")
         direction = random.choice(directions)
+        move_count +=1
         print("Direction:", direction)
         while direction != SOUTH and direction != WEST:
             print("Not a valid direction!")
             print("You can travel: (S)outh or (W)est.")
             direction = random.choice(directions)
+            move_count +=1
             print("Direction:", direction)
         else:
             location = move_val(location,direction)
-            return round(location,1)
+            return round(location,1), move_count
     elif location == 2.3:
         print("You can travel: (E)ast or (W)est.")
         direction = random.choice(directions)
+        move_count +=1
         print("Direction:", direction)
         while direction != EAST and direction != WEST:
             print("Not a valid direction!")
             print("You can travel: (E)ast or (W)est.")
             direction = random.choice(directions)
+            move_count +=1
             print("Direction:", direction)
         else:
             location = move_val(location,direction)
-            return round(location,1)
+            return round(location,1), move_count
     elif location == 3.2:
         print("You can travel: (N)orth or (S)outh.")
         direction = random.choice(directions)
+        move_count +=1
         print("Direction:", direction)
         while direction != NORTH and direction != SOUTH:
             print("Not a valid direction!")
             print("You can travel: (N)orth or (S)outh.")
             direction = random.choice(directions)
+            move_count +=1
             print("Direction:", direction)
         else:
             location = move_val(location,direction)
-            return round(location,1)
+            return round(location,1), move_count
     elif location == 3.3:
         print("You can travel: (S)outh or (W)est.")
         direction = random.choice(directions)
+        move_count +=1
         print("Direction:", direction)
         while direction != SOUTH and direction != WEST:
             print("Not a valid direction!")
             print("You can travel: (S)outh or (W)est.")
             direction = random.choice(directions)
+            move_count +=1
             print("Direction:", direction)
         else:
             location = move_val(location,direction)
-            return round(location,1)
+            return round(location,1), move_count
 
 
 def the_game(position, total_coin, lever_position, directions,y_n):
@@ -145,10 +161,9 @@ def the_game(position, total_coin, lever_position, directions,y_n):
     random.seed(input_seed)
     move_count = 0
     while position != 3.1:
-        position = move(position, directions)
+        position, move_count = move(position, directions, move_count)
         if position in lever_position:
             total_coin = pull_a_lever(total_coin,y_n)
-        move_count +=1
     print("Victory! Total coins {}. Moves {}.".format(total_coin,move_count))
 
 position = 1.1
@@ -165,3 +180,4 @@ while play_again == "y":
     play_again = input("Play again (y/n): ").lower()
 
 
+####gera breytingar 
