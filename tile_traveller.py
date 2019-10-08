@@ -25,10 +25,18 @@ def move_val(location,direction):
         location -= 1.0
         return location
 
-def pull_a_lever():
-    #pull = input("Pull a lever (y/n): ")
-    pass 
+def pull_a_lever(total_coin):
 
+    pull = input("Pull a lever (y/n): ").lower()
+    
+    if pull == "y":
+        total_coin += 1
+        print("You received 1 coin, your total is now {}.".format(total_coin))
+
+    else:
+        total_coin += 0
+
+    return total_coin
 
 
 def move(location):
@@ -38,6 +46,7 @@ def move(location):
         direction = input("Direction: ").lower()
         while direction != NORTH:
             print("Not a valid direction!")
+            print("You can travel: (N)orth.")
             direction = input("Direction: ").lower()
         else:
             location = move_val(location,direction)
@@ -47,6 +56,7 @@ def move(location):
         direction = input("Direction: ").lower()
         while direction!= NORTH and direction!= EAST and direction != SOUTH:
             print("Not a valid direction!")
+            print("You can travel: (N)orth or (E)ast or (S)outh.")
             direction = input("Direction: ").lower()
         else:
             location = move_val(location,direction)
@@ -56,6 +66,7 @@ def move(location):
         direction = input("Direction: ").lower()
         while  direction!= EAST and direction!= SOUTH:
             print("Not a valid direction!")
+            print("You can travel: (E)ast or (S)outh.")
             direction = input("Direction: ").lower()
         else:
             location = move_val(location,direction)
@@ -65,6 +76,7 @@ def move(location):
         direction = input("Direction: ").lower()
         while direction != NORTH:
             print("Not a valid direction!")
+            print("You can travel: (N)orth.")
             direction = input("Direction: ").lower()
         else:
             location = move_val(location,direction)
@@ -74,6 +86,7 @@ def move(location):
         direction = input("Direction: ").lower()
         while direction != SOUTH and direction != WEST:
             print("Not a valid direction!")
+            print("You can travel: (S)outh or (W)est.")
             direction = input("Direction: ").lower()
         else:
             location = move_val(location,direction)
@@ -83,6 +96,7 @@ def move(location):
         direction = input("Direction: ").lower()
         while direction != EAST and direction != WEST:
             print("Not a valid direction!")
+            print("You can travel: (E)ast or (W)est.")
             direction = input("Direction: ").lower()
         else:
             location = move_val(location,direction)
@@ -92,6 +106,7 @@ def move(location):
         direction = input("Direction: ").lower()
         while direction != NORTH and direction != SOUTH:
             print("Not a valid direction!")
+            print("You can travel: (N)orth or (S)outh.")
             direction = input("Direction: ").lower()
         else:
             location = move_val(location,direction)
@@ -101,6 +116,7 @@ def move(location):
         direction = input("Direction: ").lower()
         while direction != SOUTH and direction != WEST:
             print("Not a valid direction!")
+            print("You can travel: (S)outh or (W)est.")
             direction = input("Direction: ").lower()
         else:
             location = move_val(location,direction)
@@ -110,8 +126,14 @@ def move(location):
 
 
 position = 1.1
+total_coin = 0
+lever_position = [1.2 , 2.2 , 2.3 , 3.2]
+
 while position != 3.1:
     position = move(position)
+    if position in lever_position:
+        total_coin = pull_a_lever(total_coin)
 
-print("Victory!")
+
+print("Victory! Total coins {}.".format(total_coin))
 
